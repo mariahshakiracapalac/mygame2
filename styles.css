@@ -1,0 +1,148 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    background-image: url('house.jpg'); /* Path to your background image */
+    background-size: cover; /* Cover the entire body */
+    background-position: center; /* Center the background image */
+    height: 100vh; /* Full height */
+}
+
+h1 {
+    margin: 20px;
+    color: #fff; /* Light text color for better contrast */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Shadow for title */
+    font-size: 2.5em; /* Larger font size */
+}
+
+#gameContainer {
+    position: relative;
+    width: 400px;
+    height: 600px;
+    border: 2px solid #333;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* Deeper shadow for the game container */
+    border-radius: 12px; /* More rounded corners */
+}
+
+#basket {
+    position: absolute;
+    bottom: 20px; /* Keep the basket 20px from the bottom */
+    width: 80px; /* Adjust width based on your basket image */
+    height: 80px; /* Adjust height based on your basket image */
+    background-image: url('basket.png'); /* Path to the basket image */
+    background-size: cover;
+    left: 0; /* Align basket to the left edge */
+    transition: transform 0.2s; /* Smooth transition for basket movement */
+}
+
+.fruit {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-size: cover;
+}
+
+#score, #missed {
+    margin-top: 20px;
+    font-size: 24px;
+    color: #333; /* Dark text color */
+    font-weight: bold; /* Bold text for emphasis */
+}
+
+#gameOver {
+    position: fixed; /* Position fixed to cover the entire screen */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none; /* Hidden by default */
+    background-color: rgba(0, 0, 0, 0.8); /* Dark background with transparency */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    animation: fadeIn 0.5s; /* Fade-in effect */
+    z-index: 1000; /* Ensure it is above other content */
+    backdrop-filter: blur(10px); /* More pronounced blur for the background */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+#finalScoreDisplay {
+    font-size: 36px;
+    color: #FFD700; /* Gold color for score */
+    margin-bottom: 20px; /* Space between score and button */
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+}
+
+#gameOverMessage {
+    font-size: 48px; /* Larger font size for the game over message */
+    color: #FF4500; /* Bright color for visibility */
+    margin-bottom: 10px; /* Space between the message and button */
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7); /* Shadow for better visibility */
+    text-align: center; /* Centered text */
+}
+
+#restartButton {
+    padding: 15px 30px; /* Padding for the button */
+    font-size: 20px; /* Font size for the button */
+    color: white; /* Text color */
+    background: linear-gradient(90deg, #FF4500, #FF6347); /* Gradient for the button */
+    border: none; /* No border */
+    border-radius: 10px; /* Rounded corners */
+    cursor: pointer; /* Pointer on hover */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transition effects */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* Stronger shadow for the button */
+    animation: popIn 0.3s ease forwards; /* Animation for the button */
+}
+
+@keyframes popIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+#restartButton:hover {
+    background: linear-gradient(90deg, #FF6347, #FF4500); /* Inverted gradient on hover */
+    transform: scale(1.05); /* Slightly enlarge button on hover */
+}
+
+#restartButton:focus {
+    outline: none; /* Remove outline on focus */
+}
+
+/* Additional media query for responsiveness */
+@media (max-width: 480px) {
+    #gameContainer {
+        width: 90%; /* Responsive width for small screens */
+        height: 500px; /* Adjust height for smaller screens */
+    }
+
+    h1 {
+        font-size: 2em; /* Responsive title size */
+    }
+
+    #score, #missed {
+        font-size: 20px; /* Responsive font size */
+    }
+
+    #finalScoreDisplay, #gameOverMessage {
+        font-size: 28px; /* Responsive score size */
+    }
+
+    #restartButton {
+        font-size: 18px; /* Responsive button size */
+    }
+}
